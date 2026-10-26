@@ -99,29 +99,8 @@
 
         // ドラッグ固定: 押すと左クリックを押しっぱなしにする。ボールで動かして、クリックで離す
         // （1 分たつと自動で離す）
-        drag_lock: drag_lock {
-            compatible = "zmk,behavior-sticky-key";
-            #binding-cells = <1>;
-            release-after-ms = <60000>;
-            bindings = <&mkp>;
-        };
 
         // 括弧のペアを入力して、カーソルを内側に戻す。IME オン時の [] は「」になる
-        pair_paren: pair_paren {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
-        };
-        pair_bkt: pair_bkt {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
-        };
-        pair_brc: pair_brc {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
-        };
 
         // 中央の 5 方向キー用。長押しでレイヤー、単押しでキー/マウスボタン
         lt_5w: lt_5way {
@@ -231,42 +210,10 @@
         };
 
         // S+D 同時押しで Caps Word（次のスペースまで大文字。MAX_VALUE のような定数名用）
-        combo_caps_word {
-            bindings = <&caps_word>;
-            key-positions = <14 15>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <150>;
-            layers = <DEF>;
-        };
 
         // D+F 同時押しでワンショット Shift（離した後の 1 文字だけ大文字）
-        combo_oneshot_shift {
-            bindings = <&sk LSHFT>;
-            key-positions = <15 16>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <150>;
-            layers = <DEF>;
-        };
 
         // 記号レイヤーで、開き括弧と閉じ括弧を同時押しするとペアで入力
-        combo_pair_paren {
-            bindings = <&pair_paren>;
-            key-positions = <19 20>;
-            timeout-ms = <40>;
-            layers = <SYM>;
-        };
-        combo_pair_bkt {
-            bindings = <&pair_bkt>;
-            key-positions = <31 32>;
-            timeout-ms = <40>;
-            layers = <SYM>;
-        };
-        combo_pair_brc {
-            bindings = <&pair_brc>;
-            key-positions = <30 33>;
-            timeout-ms = <40>;
-            layers = <SYM>;
-        };
     };
 
     keymap {
@@ -348,7 +295,7 @@
             bindings = <
 &trans     &kp F1      &kp F2          &kp F3         &kp F4       &kp F5            &kp F6           &kp F7           &kp F8      &kp F9       &kp F10      &trans
 &trans     &kp LGUI    &kp LG(LS(S))   &kp LG(D)      &kp LG(E)    &kp LG(L)         &kp LG(LEFT)     &kp LG(DOWN)     &kp LG(UP)  &kp LG(RIGHT)  &kp LG(TAB)  &trans
-&trans     &kp F11     &kp F12         &drag_lock MB1 &kp LG(V)    &trans            &kp LC(LG(LEFT)) &kp LC(LG(RIGHT)) &trans     &trans       &trans
+&trans     &kp F11     &kp F12         &trans &kp LG(V)    &trans            &kp LC(LG(LEFT)) &kp LC(LG(RIGHT)) &trans     &trans       &trans
 &trans          &trans        &trans                      &trans        &trans            &trans      &trans      &trans        &trans        &trans   &trans
 &trans          &trans        &trans        &trans        &trans                          &trans      &trans      &trans
 &trans     &trans
